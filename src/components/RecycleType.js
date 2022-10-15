@@ -1,9 +1,9 @@
 import React from "react";
 import { Text, StyleSheet, TouchableOpacity } from "react-native";
 
-const RecycleType = ({ title }) => {
+const RecycleType = ({ title, onPress }) => {
   return (
-    <TouchableOpacity style={styles.button}>
+    <TouchableOpacity style={styles.button} onPress={onPress}>
       <Text>{title}</Text>
     </TouchableOpacity>
   );

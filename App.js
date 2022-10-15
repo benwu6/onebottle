@@ -1,17 +1,18 @@
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import HomeScreen from "./src/screens/HomeScreen";
-import HistoryScreen from "./src/screens/HistoryScreen";
+import PlasticHistoryScreen from "./src/screens/PlasticHistoryScreen";
+import NewItem from "./src/screens/NewItem";
 
 const navigator = createStackNavigator(
   {
     Home: HomeScreen,
-    History: HistoryScreen,
+    NewItem: NewItem,
+    PlasticHistory: PlasticHistoryScreen,
   },
   {
-    initialRouteName: "Home",
+    initialRouteName: "NewItem",
     defaultNavigationOptions: {
-      title: "Home",
       headerShown: false,
     },
   }

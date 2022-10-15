@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
 import { useFonts } from "expo-font";
-import RecycleType from "../components/RecycleType";
 
-const HomeScreen = ({ navigation }) => {
-  const [total, setTotal] = useState(0);
-  const [days, setDays] = useState(0);
+const PlasticHistoryScreen = () => {
+  const [pieces, setPieces] = useState(0);
+  const [pounds, setPounds] = useState(0);
 
   const [loaded] = useFonts({
     Mandali: require("../assets/fonts/Mandali-Regular.ttf"),
@@ -24,30 +23,32 @@ const HomeScreen = ({ navigation }) => {
       />
       <View style={styles.headingBar}>
         <View style={styles.headingBox}>
-          <Text style={styles.heading}>One Bottle</Text>
+          <Text style={styles.heading}>Plastic</Text>
         </View>
         <TouchableOpacity style={styles.profileButton}></TouchableOpacity>
       </View>
-      <View style={styles.blueCircle}>
-        <Text style={styles.trackerText}>{total}</Text>
-        <Text style={styles.daysText}>{days} days</Text>
-      </View>
-      <TouchableOpacity style={styles.newButton}>
-        <Text style={styles.heading}>New Recycle</Text>
-      </TouchableOpacity>
 
-      <View style={styles.historyButtons}>
-        <RecycleType
-          title="Plastic"
-          onPress={() => navigation.navigate("PlasticHistory")}
-        ></RecycleType>
-        <RecycleType title="Battery"></RecycleType>
-        <RecycleType title="Paper"></RecycleType>
+      <View style={styles.dataContainer}>
+        <View style={styles.dataAndText}>
+          <View style={styles.blueCircle}>
+            <Text style={styles.dataText}>{pieces}</Text>
+          </View>
+          <Text style={styles.dataWordText}>Total Pieces Recycled</Text>
+        </View>
+        <View style={styles.dataAndText}>
+          <View style={styles.blueCircle}>
+            <Text style={styles.dataText}>{pounds}</Text>
+          </View>
+          <Text style={styles.dataWordText}>Pounds Saved</Text>
+        </View>
       </View>
-      <View style={styles.historyButtons2}>
-        <RecycleType title="Glass"></RecycleType>
-        <RecycleType title="Metal"></RecycleType>
-        <RecycleType title="Other"></RecycleType>
+
+      <View style={styles.greenBox}>
+        <Text style={styles.historyHeading}>History</Text>
+        <View style={styles.historyDataContainer}>
+          <Text style={styles.dataSmallHeading}>Location</Text>
+          <Text style={styles.dataSmallHeading}>Item</Text>
+        </View>
       </View>
     </View>
   );
@@ -80,52 +81,62 @@ const styles = StyleSheet.create({
   },
   blueCircle: {
     display: "flex",
-    width: 272,
-    height: 275,
-    marginTop: 30,
+    width: 162,
+    height: 162,
     borderRadius: 200,
-    backgroundColor: "#ACC1E2",
-    display: "flex",
+    backgroundColor: "#ACC1E295",
     alignItems: "center",
     justifyContent: "center",
-  },
-  newButton: {
-    width: 315,
-    height: 60,
-    backgroundColor: "#D9D9D9",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 30,
+    margin: 10,
     marginTop: 30,
-    shadowColor: "rgba(0, 0, 0, 0.5)",
-    shadowOpacity: 0.5,
-    shadowRadius: 3,
-    shadowOffset: { width: 1, height: 5 },
   },
-  historyButtons: {
-    display: "flex",
-    width: "100%",
-    justifyContent: "space-around",
-    flexDirection: "row",
-    marginTop: 40,
+  profileButton: {
+    width: 60,
+    height: 60,
+    borderRadius: 50,
+    backgroundColor: "#8FBBAB",
   },
-  historyButtons2: {
+  dataContainer: {
     display: "flex",
-    width: "100%",
-    justifyContent: "space-around",
     flexDirection: "row",
+  },
+  dataAndText: {
+    display: "flex",
+    alignItems: "center",
+  },
+  greenBox: {
+    display: "flex",
+    backgroundColor: "#8FBBAB80",
+    borderRadius: 50,
     marginTop: 40,
+    width: 338,
+    height: 360,
+  },
+  historyDataContainer: {
+    display: "flex",
+    flexDirection: "row",
+    paddingLeft: 35,
+    paddingRight: 35,
   },
 
   // text styles
   heading: {
-    fontSize: 30,
+    fontSize: 40,
     fontFamily: "Mandali",
   },
-  daysText: {
-    fontSize: 20,
+  historyHeading: {
+    fontSize: 30,
+    fontFamily: "Mandali",
+    marginLeft: 30,
+    marginTop: 5,
+  },
+  dataText: {
+    fontSize: 40,
     fontFamily: "Madali",
+  },
+  dataWordText: {
+    fontSize: 15,
+    fontFamily: "Mandali",
   },
   trackerText: {
     fontFamily: "KdamThmor",
@@ -134,14 +145,12 @@ const styles = StyleSheet.create({
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 4,
   },
-  profileButton: {
-    width: 60,
-    height: 60,
-    borderRadius: 50,
-    backgroundColor: "#8FBBAB",
+  dataSmallHeading: {
+    fontSize: 15,
+    fontFamily: "Mandali",
+    flex: 1,
   },
 
-  //other styles
   background: {
     width: "100%",
     height: "100%",
@@ -149,4 +158,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default PlasticHistoryScreen;
