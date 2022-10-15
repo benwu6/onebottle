@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { StatusBar } from "expo-status-bar";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { useFonts } from "expo-font";
+import RecycleType from "../components/RecycleType";
 
 const HomeScreen = () => {
   const [total, setTotal] = useState(0);
@@ -25,11 +25,20 @@ const HomeScreen = () => {
         <Text style={styles.trackerText}>{total}</Text>
         <Text style={styles.daysText}>{days} days</Text>
       </View>
-      <View style={styles.newButton}>
+      <TouchableOpacity style={styles.newButton}>
         <Text style={styles.heading}>New Recycle</Text>
-      </View>
+      </TouchableOpacity>
 
-      <View></View>
+      <View style={styles.historyButtons}>
+        <RecycleType title="Plastic"></RecycleType>
+        <RecycleType title="Battery"></RecycleType>
+        <RecycleType title="Paper"></RecycleType>
+      </View>
+      <View style={styles.historyButtons2}>
+        <RecycleType title="Glass"></RecycleType>
+        <RecycleType title="Metal"></RecycleType>
+        <RecycleType title="Other"></RecycleType>
+      </View>
     </View>
   );
 };
@@ -77,6 +86,20 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 3,
     shadowOffset: { width: 1, height: 5 },
+  },
+  historyButtons: {
+    display: "flex",
+    width: "100%",
+    justifyContent: "space-around",
+    flexDirection: "row",
+    marginTop: 160,
+  },
+  historyButtons2: {
+    display: "flex",
+    width: "100%",
+    justifyContent: "space-around",
+    flexDirection: "row",
+    marginTop: 40,
   },
 
   // text styles
