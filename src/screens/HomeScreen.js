@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
 import { useFonts } from "expo-font";
 import RecycleType from "../components/RecycleType";
 
@@ -18,8 +18,15 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.headingBox}>
-        <Text style={styles.heading}>One Bottle</Text>
+      <Image
+        style={styles.background}
+        source={require("../assets/sea-background.png")}
+      />
+      <View style={styles.headingBar}>
+        <View style={styles.headingBox}>
+          <Text style={styles.heading}>One Bottle</Text>
+        </View>
+        <TouchableOpacity style={styles.profileButton}></TouchableOpacity>
       </View>
       <View style={styles.blueCircle}>
         <Text style={styles.trackerText}>{total}</Text>
@@ -50,23 +57,29 @@ const styles = StyleSheet.create({
     height: "100%",
     alignItems: "center",
   },
+  headingBar: {
+    display: "flex",
+    width: "100%",
+    flexDirection: "row",
+    marginTop: 70,
+    alignItems: "center",
+  },
   headingBox: {
     width: 185,
     height: 91,
-    left: 24,
-    top: 44,
+    marginLeft: 24,
     borderRadius: 50,
     backgroundColor: "#D9D9D9",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    alignSelf: "flex-start",
+    marginRight: 100,
   },
   blueCircle: {
     display: "flex",
     width: 272,
     height: 275,
-    top: 80,
+    marginTop: 30,
     borderRadius: 200,
     backgroundColor: "#ACC1E2",
     display: "flex",
@@ -81,7 +94,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 30,
-    top: 130,
+    marginTop: 30,
     shadowColor: "rgba(0, 0, 0, 0.5)",
     shadowOpacity: 0.5,
     shadowRadius: 3,
@@ -92,7 +105,7 @@ const styles = StyleSheet.create({
     width: "100%",
     justifyContent: "space-around",
     flexDirection: "row",
-    marginTop: 160,
+    marginTop: 40,
   },
   historyButtons2: {
     display: "flex",
@@ -117,6 +130,19 @@ const styles = StyleSheet.create({
     textShadowColor: "rgba(0, 0, 0, 0.75)",
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 4,
+  },
+  profileButton: {
+    width: 60,
+    height: 60,
+    borderRadius: 50,
+    backgroundColor: "#8FBBAB",
+  },
+
+  //other styles
+  background: {
+    width: "100%",
+    height: "100%",
+    position: "absolute",
   },
 });
 
